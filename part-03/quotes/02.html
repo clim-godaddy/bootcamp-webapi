@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>That which does ...</title>
+    <style>
+blockquote p {
+    padding: 15px;
+    background: #eee;
+    border-radius: 5px;
+}
+
+blockquote p::before {
+    content: '\201C';
+}
+
+blockquote p::after {
+    content: '\201D';
+}
+figcaption {
+    align-content: right;
+}
+    </style>
+</head>
+<body>
+    <figure>
+        <blockquote>
+            <p>That which does not kill us makes us stronger.</p>
+        </blockquote>
+        <figcaption>— Friedrich Nietzsche</figcaption>
+    </figure>
+</body>
+</html>

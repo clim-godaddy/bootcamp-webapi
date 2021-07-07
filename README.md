@@ -48,3 +48,20 @@ Hands On
     * `telnet localhost 1234`
     * Type some text
     * Quit: `Ctrl+]` -> `quit`
+
+
+## Web - HTML
+
+HTML (HyperText Markup Language)
+* Build engaging content
+  * HyperText: text that links to other resources (`index` page)
+* Can refer to additional resources
+  * Images
+  * CSS (styles)
+  * Javascript (code running on browser)
+
+Hands On
+
+* Convert files to html, use some html elements
+  * `<blockquote>` or `<q>`
+  * Play with HTML
