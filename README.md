@@ -89,3 +89,40 @@ Hands On
   * Think about how to process/parse necessary data
   * How is it brittle?
 
+
+## Rest API
+
+* Representational state transfer (REST)
+  * NOUNs: Resources identified via URI
+  * VERBs: Re-using HTTP Methods (GET, POST, PUT, DELETE)
+  * Media Type (Response): JSON (JavaScript Object Notation) most common, Yaml, XML
+  * Similar to browsing regular website, but getting response in JSON
+  * Payload is very small compared to HTML
+  * Has a schema, this makes it very easy for any Applications to consume the data
+
+* JSON (JavaScript Object Notation)
+  * Most common Media Type (Response)
+  * Benefits
+    * Human readable, data self documenting with good naming
+    * Easy to consume
+    * Example
+      ```json
+      { 
+        "id": 1,
+        "author": "Lao Tzu", 
+        "quote": "The journey of a thousand miles begins with one step."
+      }
+      ```
+
+Hands On
+* Update quotes to JSON format
+* Fetching JSON data from Browser
+  * Open Developer Console
+    ```javascript
+    response = await fetch('./01.json')
+    json = await response.json()
+    json.author
+    json.quote
+    ```
+* Inspect `01.html`
+  * Note how we are using JavaScript to retrieve data
