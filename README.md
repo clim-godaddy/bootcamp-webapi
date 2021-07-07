@@ -1,5 +1,11 @@
 # Bootcamp Web API
 
+Requirements
+
+* [Docker](https://www.docker.com/)
+* [Visual Studio Code](https://code.visualstudio.com/)
+  * [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) plugin
+
 
 ## What is API
 
@@ -28,7 +34,7 @@ Now that we have an Application, we can share with the world
   * Analogy: A customer ordering food via the server in a restaurant
 * DNS: We need a name for our server to make it easier for others to find instead of IP
 * Web Server can serve both static & dynamic contents
-* Reponse statuc codes are organized (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+* [Reponse status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) are organized
   * 1xx: Informational
   * 2xx: Success
   * 3xx: Redirects
@@ -147,7 +153,7 @@ Create Read Update Delete
   * `GET /quotes/`: Get a list of all quotes
   * `PATCH /quotes/<quote-id>`: Update existing quote with only fields specified in the body
 * Example:
-  * https://quotes.rest/
+  * [Quotes.REST API](https://quotes.rest/)
 * Special
   * Search/Filtering
     * List with query params or body params
@@ -159,7 +165,7 @@ Hands On
 
 ## OpenAPI (Swagger)
 
-REST API Specification (https://www.openapis.org/)
+REST API Specification [OpenAPIs](https://www.openapis.org/)
 * Describe API (Documentation)
   * Endpoints
   * Inputs and Outputs (Schema)
@@ -179,10 +185,10 @@ REST API Specification (https://www.openapis.org/)
   * Code-First: Generate Swagger definition from code
 
 Hands On
-* Inspect Example Endpoint OpenAPI (https://quotes.rest/)
+* Inspect Example OpenAPI: [Quotes.REST API](https://quotes.rest/)
 * Design a simple Quote OpenAPI (id, author, quote)
-  * Swagger (https://editor.swagger.io/)
-  * Postman (https://www.postman.com/)
+  * [Swagger](https://editor.swagger.io/)
+  * [Postman](https://www.postman.com/)
     * Download & Install Postman
 
 
