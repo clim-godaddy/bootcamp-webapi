@@ -184,3 +184,15 @@ Hands On
   * Swagger (https://editor.swagger.io/)
   * Postman (https://www.postman.com/)
     * Download & Install Postman
+
+
+## OpenAPI - Design Exercise
+
+Store
+* CRUD Products
+* Adding items to Cart for purchases
+
+Hands On
+* Experiment/Design
+  * Product API is available
+  * Extend API to include a Cart API
