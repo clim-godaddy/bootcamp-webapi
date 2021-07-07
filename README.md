@@ -126,3 +126,24 @@ Hands On
     ```
 * Inspect `01.html`
   * Note how we are using JavaScript to retrieve data
+
+
+## Rest API - CRUD
+
+Create Read Update Delete
+* Common set of operations for resource based API
+  * `POST /quotes/`: Create a new quote with data in the body
+  * `GET /quotes/<quote-id>`: Get a specific quote
+  * `PUT /quotes/<quote-id>`: Create a new quote/Update existing entire quote
+  * `DELETE /quotes/<quote-id>`: Delete existing quote
+  * `GET /quotes/`: Get a list of all quotes
+  * `PATCH /quotes/<quote-id>`: Update existing quote with only fields specified in the body
+* Example:
+  * https://quotes.rest/
+* Special
+  * Search/Filtering
+    * List with query params or body params
+    * Possibly include `VERB` (e.g. `/search`) in the URI
+
+Hands On
+* Play with API
