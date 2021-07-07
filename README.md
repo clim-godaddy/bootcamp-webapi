@@ -27,6 +27,14 @@ Now that we have an Application, we can share with the world
 * Web Server: An application serving contents (IP address, e.g. 208.109.192.70)
   * Analogy: A customer ordering food via the server in a restaurant
 * DNS: We need a name for our server to make it easier for others to find instead of IP
+* Web Server can serve both static & dynamic contents
+* Reponse statuc codes are organized (https://developer.mozilla.org/en-US/docs/Web/HTTP/Status)
+  * 1xx: Informational
+  * 2xx: Success
+  * 3xx: Redirects
+  * 4xx: Client errors
+  * 5xx: Server errors
+
 
 Hands On
 
@@ -147,3 +155,32 @@ Create Read Update Delete
 
 Hands On
 * Play with API
+
+
+## OpenAPI (Swagger)
+
+REST API Specification (https://www.openapis.org/)
+* Describe API (Documentation)
+  * Endpoints
+  * Inputs and Outputs (Schema)
+  * Support calling API against endpoints
+  * Include examples
+* Benefits
+  * Validation/Linting on Specification
+  * Data Validation
+  * Documentation
+  * Code Generation (for Design First approach)
+  * Tools
+    * Design: Graphical Editors
+    * Mock Servers
+    * Testing
+* Two Approaches: 
+  * Design-First: Preferable, consumer focused
+  * Code-First: Generate Swagger definition from code
+
+Hands On
+* Inspect Example Endpoint OpenAPI (https://quotes.rest/)
+* Design a simple Quote OpenAPI (id, author, quote)
+  * Swagger (https://editor.swagger.io/)
+  * Postman (https://www.postman.com/)
+    * Download & Install Postman
