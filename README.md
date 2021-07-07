@@ -65,3 +65,27 @@ Hands On
 * Convert files to html, use some html elements
   * `<blockquote>` or `<q>`
   * Play with HTML
+
+
+## Remote/Web API
+
+* HTML: Only targets Browsers, there are many types of Applications
+  * Browser
+  * Desktop Applications
+  * Mobile Applications
+* Consume HTML content directly
+  * Scraping – common as a quick and dirty approach to consumer external data, brittle
+* Possible approach: Go back to data only, continue to use HTTP
+  * Text – require parsing to identify quotes, author, etc
+  * CSV – comma separate (author, quote)
+  * XML (Like HTML, but describe just the data)
+  * JSON
+* RPC (Remote procedure call)
+  * XML-RPC, SOAP, CORBA
+
+Hands On
+
+* Inspect output from `Web - HTML`
+  * Think about how to process/parse necessary data
+  * How is it brittle?
+
