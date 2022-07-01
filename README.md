@@ -61,7 +61,7 @@ Demo/Hands On (part-01)
   * Curl
     * `curl localhost:8080/01.txt`
     * `curl –X GET localhost:8080/01.txt`
-  * Chrome: 
+  * Chrome:
     * Browse to `localhost:8080/01.txt`
     * Inspect Network: View > Developer Tools > Network
     * Note General Section
@@ -145,9 +145,9 @@ Demo/Hands On (part-03)
     * Easy to consume
     * Example
       ```json
-      { 
+      {
         "id": 1,
-        "author": "Lao Tzu", 
+        "author": "Lao Tzu",
         "quote": "The journey of a thousand miles begins with one step."
       }
       ```
@@ -231,7 +231,7 @@ REST API Specification [OpenAPIs](https://www.openapis.org/)
     * Design: Graphical Editors
     * Mock Servers
     * Testing
-* Two Approaches: 
+* Two Approaches:
   * Design-First: Preferable, consumer focused
   * Code-First: Generate OpenAPI Spec definition from code
     * less control
@@ -249,8 +249,12 @@ Demo/Hands On (part-06)
 
 ## OpenAPI - Design Exercise
 
-Design Cart API
-* Products API is provided 
-  * the item to add to Cart
-  * as reference
-* Adding items to Cart for purchases
+We have an API specification for our products resource, now we need the cart item resources defined. Use the [Swagger Editor](https://editor.swagger.io/)
+
+1. Load [./part-07/api.json](./part-07/api.json) into the editor
+2. First lets define the Model or Schema
+    * what type of data does a shopping cart have in it
+3. Create the cartitems/ URLs. Different for resources & collections
+4. Define the CRUD operations and a R-Collections
+5. Do the [status codes](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes) make sense
+6. Make sure to save a copy of your spec. You will need it to build your API
