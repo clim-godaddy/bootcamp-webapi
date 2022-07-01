@@ -5,35 +5,43 @@ Requirements
 * [Docker](https://www.docker.com/)
 * [Visual Studio Code](https://code.visualstudio.com/)
   * [Remote - Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) plugin
+* [Postman](https://www.postman.com/downloads/)
+* [Swagger](https://editor.swagger.io/))
 
 
 ## What is API
 
+Application: User interacting with machine, human to machine
+API: Application Programming Interface, machine to machine
 Allows communications between software
 
 * Application interacting with OperatingSystem (e.g. open file)
 * Shell (bash, zsh) – scripting over OS
 
-Hands On
+Demo/Hands On (part-01)
 
-* Interact with Shell
-  * Show information (`date`, `whoami`, `cat <file>`, `less`)
-  * Navigate (`cd`, `ls`)
-* Interact with other programs
-  * `git`
-* Build simple Quotes API
-  * Create `quotes` directory
-  * Create `quote` file `07.txt` to complete quote for days of the week
-  * Script to show random quote, day-of-week quote
+* Sample clients consuming API
+  * Text editor `vscode` viewing/editing files
+  * Web Browser viewing local files in Read-Only mode
+    * Note `index`/`parent` directory
+
+* Simple Quotes CLI Application
+  * `cd part-01`
+  * `./quote-day.sh`: Show day-of-week quote
+  * `./quote-random.sh`: Show random quote
 
 
 ## Web - HTTP
 
-Now that we have an Application, we can share with the world
-* Web Server: An application serving contents (IP address, e.g. 208.109.192.70)
-  * Analogy: A customer ordering food via the server in a restaurant
-* DNS: We need a name for our server to make it easier for others to find instead of IP
-* Web Server can serve both static & dynamic contents
+Now that we have an Application, we want to share with the world
+* Web Server: An application serving contents
+* Web Client: An application requesting contents
+
+Analogy: A customer (Web Browser) ordering food via the server (Web Server) in a restaurant
+
+* Web Server can serve:
+  * static: images, binary contents, files
+  * dynamic: current time, transforming input data, reading from database
 * [Reponse status codes](https://developer.mozilla.org/en-US/docs/Web/HTTP/Status) are organized
   * 1xx: Informational
   * 2xx: Success
@@ -42,26 +50,36 @@ Now that we have an Application, we can share with the world
   * 5xx: Server errors
 
 
-Hands On
+Demo/Hands On (part-01)
 
-* Host a local server serving the files from previous session
-  * `python -m http.server 8080 --directory quotes`
+* Start server
+  * `cd part-01`
+  * `./start-server.sh`
 * Use browser to view files
-  * Note `index` page shows a listing of files (similar to `ls`)
-* HTTP is a simple protocol
+  * Note `index` page shows a listing of files
+* HTTP is a simple protocol (URI, Verbs)
+  * Curl
+    * `curl localhost:8080/01.txt`
+    * `curl –X GET localhost:8080/01.txt`
+  * Chrome: 
+    * Browse to `localhost:8080/01.txt`
+    * Inspect Network: View > Developer Tools > Network
+    * Note General Section
+  * Postman:
+    * Settings > ScratchPad
+    * Paste `localhost:8080/01.txt` > `Send`
+    * Inspect output
+* Navigate to a non-existent location: `404 Not Found`
+
+
+Bonus
+
+* Raw TCP communication
   * `telnet localhost 8080`
   * Type the following
     ```
     GET / <enter> <enter>
     ```
-* `telnet` establishes a connection to the server
-  * Run echo server
-    * `python echo_server.py`
-    * Review implementation
-  * Communicate with server via `telnet`
-    * `telnet localhost 1234`
-    * Type some text
-    * Quit: `Ctrl+]` -> `quit`
 
 
 ## Web - HTML
@@ -74,42 +92,48 @@ HTML (HyperText Markup Language)
   * CSS (styles)
   * Javascript (code running on browser)
 
-Hands On
+Demo/Hands On (part-03)
 
-* Convert files to html, use some html elements
+* Start server
+  * `cd part-03`
+  * `./start-server.sh`
+* Convert `quotes` to html, use some html elements
   * `<blockquote>` or `<q>`
-  * Play with HTML
+  * Feel free to play with HTML, reload page
 
 
 ## Remote/Web API
 
-* HTML: Only targets Browsers, there are many types of Applications
+* HTML: Only targets Browsers, more for Human consumption.  There are many types of Applications:
   * Browser
   * Desktop Applications
   * Mobile Applications
-* Consume HTML content directly
+* These applications can consume HTML content directly
   * Scraping – common as a quick and dirty approach to consumer external data, brittle
-* Possible approach: Go back to data only, continue to use HTTP
+* Possible approach: Go back to *raw* data only, continue to use HTTP
   * Text – require parsing to identify quotes, author, etc
   * CSV – comma separate (author, quote)
   * XML (Like HTML, but describe just the data)
   * JSON
-* RPC (Remote procedure call)
-  * XML-RPC, SOAP, CORBA
 
-Hands On
+Demo/Hands On (part-03)
 
+* Start server
+  * `cd part-03`
+  * `./start-server.sh`
 * Inspect output from `Web - HTML`
+  * Chrome: `Right Click` -> `Inspect`
   * Think about how to process/parse necessary data
   * How is it brittle?
+  * Compare `.html` vs `.txt`
 
 
 ## Rest API
 
 * Representational state transfer (REST)
-  * NOUNs: Resources identified via URI
+  * NOUNs: Resources identified via URI (unique name)
   * VERBs: Re-using HTTP Methods (GET, POST, PUT, DELETE)
-  * Media Type (Response): JSON (JavaScript Object Notation) most common, Yaml, XML
+  * Media Type (Response): JSON (JavaScript Object Notation) most common
   * Similar to browsing regular website, but getting response in JSON
   * Payload is very small compared to HTML
   * Has a schema, this makes it very easy for any Applications to consume the data
@@ -128,7 +152,11 @@ Hands On
       }
       ```
 
-Hands On
+Demo/Hands On (part-05)
+
+* Start server
+  * `cd part-05`
+  * `./start-server.sh`
 * Update quotes to JSON format
 * Fetching JSON data from Browser
   * Open Developer Console
@@ -141,26 +169,49 @@ Hands On
 * Inspect `01.html`
   * Note how we are using JavaScript to retrieve data
 
+Bonus
+
+* Text
+  ```javascript
+  txtResponse = await fetch('./01.txt')
+  txt = await response.json()
+  txtSplit = txt.Split(/\n/)
+  txtData = {
+    author: txtSplit[1],
+    quote: txtSplit[0]
+  }
+  ```
+  Limitation: Quote cannot have new line.
+* CSV
+  ```javascript
+  csvResponse = await fetch('./01.csv')
+  csv = await response.json()
+  csvSplit = txt.Split(/,/)
+  csvData = {
+    author: csvSplit[1],
+    quote: csvSplit[0]
+  }
+  ```
+  Limitation: Cannot handle quote with commas.
+
 
 ## Rest API - CRUD
 
 Create Read Update Delete
-* Common set of operations for resource based API
+* Common set of operations for resource based API (Remember VERB NOUN)
   * `POST /quotes/`: Create a new quote with data in the body
   * `GET /quotes/<quote-id>`: Get a specific quote
   * `PUT /quotes/<quote-id>`: Create a new quote/Update existing entire quote
   * `DELETE /quotes/<quote-id>`: Delete existing quote
   * `GET /quotes/`: Get a list of all quotes
   * `PATCH /quotes/<quote-id>`: Update existing quote with only fields specified in the body
-* Example:
-  * [Quotes.REST API](https://quotes.rest/)
 * Special
   * Search/Filtering
     * List with query params or body params
     * Possibly include `VERB` (e.g. `/search`) in the URI
 
-Hands On
-* Play with API
+Demo
+  * Cart API
 
 
 ## OpenAPI (Swagger)
@@ -182,23 +233,24 @@ REST API Specification [OpenAPIs](https://www.openapis.org/)
     * Testing
 * Two Approaches: 
   * Design-First: Preferable, consumer focused
-  * Code-First: Generate Swagger definition from code
+  * Code-First: Generate OpenAPI Spec definition from code
+    * less control
 
-Hands On
-* Inspect Example OpenAPI: [Quotes.REST API](https://quotes.rest/)
-* Design a simple Quote OpenAPI (id, author, quote)
+Demo/Hands On (part-06)
+
+* Start server
+  * `cd part-06`
+  * `./start-server.sh`
+* Demo Quote OpenAPI (id, author, quote)
   * [Swagger](https://editor.swagger.io/)
-  * [Postman](https://www.postman.com/)
-    * Download & Install Postman
+    * Load `quotes.json`
+    * Set parameters, Execute
 
 
 ## OpenAPI - Design Exercise
 
-Store
-* CRUD Products
+Design Cart API
+* Products API is provided 
+  * the item to add to Cart
+  * as reference
 * Adding items to Cart for purchases
-
-Hands On
-* Experiment/Design
-  * Product API is available
-  * Extend API to include a Cart API
